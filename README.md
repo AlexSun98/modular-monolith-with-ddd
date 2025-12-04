@@ -1448,6 +1448,8 @@ public class SubscriptionPayment : AggregateRoot
         _subscriptionPaymentStatus = SubscriptionPaymentStatus.Of(@event.Status);
         _value = MoneyValue.Of(@event.Value, @event.Currency);
     }
+}
+
 ```
 
 `AggregateRoot` base class:
@@ -2146,6 +2148,32 @@ You can run all Integration Tests in Docker (exactly the same process is execute
 ```shell
 .\build RunAllIntegrationTests
 ```
+
+### Run Integration Tests via Test Explorer
+
+To run integration tests directly from Visual Studio Test Explorer or other IDE test runners, you must set the required environment variable that points to your test database.
+
+**Windows (PowerShell):**
+
+```powershell
+$env:ASPNETCORE_MyMeetings_IntegrationTests_ConnectionString="Server=127.0.0.1,1401;Database=MyMeetings;User=sa;Password=123qwe!@#QWE;Encrypt=False;"
+```
+
+**Windows (Command Prompt):**
+
+```cmd
+set ASPNETCORE_MyMeetings_IntegrationTests_ConnectionString=Server=127.0.0.1,1401;Database=MyMeetings;User=sa;Password=123qwe!@#QWE;Encrypt=False;
+```
+
+**Linux/macOS:**
+
+```bash
+export ASPNETCORE_MyMeetings_IntegrationTests_ConnectionString="Server=127.0.0.1,1401;Database=MyMeetings;User=sa;Password=123qwe!@#QWE;Encrypt=False;"
+```
+
+**Note:** This environment variable is validated at the start of each integration test. If not set, tests will fail with an `ApplicationException` indicating that the connection string must be defined.
+
+Alternatively, you can set this as a **system** or **user** environment variable through your operating system settings to avoid setting it each time you open a new terminal session.
 
 ## 6. Contribution
 
