@@ -68,7 +68,7 @@ public partial class Build
                 .EnableInteractive()
                 .SetContainer("sql-server-db")
                 .SetCommand("/bin/sh")
-                .SetArgs("-c", $"./opt/mssql-tools/bin/sqlcmd -d master -i ./{InputFilesDirectoryName}/{CreateDatabaseScriptName} -U {SqlServerUser} -P {SqlServerPassword}"));
+                .SetArgs("-c", $"/opt/mssql-tools18/bin/sqlcmd -d master -i ./{InputFilesDirectoryName}/{CreateDatabaseScriptName} -U {SqlServerUser} -P {SqlServerPassword} -C"));
         });
 
     Target CompileDbUpMigratorForIntegrationTests => _ => _
