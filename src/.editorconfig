@@ -6,6 +6,12 @@ dotnet_diagnostic.SA1309.severity = none
 # SA1600: Elements should be documented
 dotnet_diagnostic.SA1600.severity = none
 
+# SA1611: Element parameters should be documented
+dotnet_diagnostic.SA1611.severity = none
+
+# SA1618: Generic type parameters should be documented
+dotnet_diagnostic.SA1618.severity = none
+
 # SA1633: File should have header
 dotnet_diagnostic.SA1633.severity = none
 
