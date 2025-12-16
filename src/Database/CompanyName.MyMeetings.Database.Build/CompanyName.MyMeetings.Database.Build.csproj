@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/3.2.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.3.0">
   <PropertyGroup>
     <SqlServerVersion>Sql160</SqlServerVersion>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>

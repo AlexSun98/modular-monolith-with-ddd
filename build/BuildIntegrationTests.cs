@@ -4,6 +4,8 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.Docker;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Tooling;
+using Serilog;
 using Utils;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
@@ -34,7 +36,7 @@ public partial class Build
             CopyFile(createDatabaseFile, createDatabaseFileTarget, FileExistsPolicy.Overwrite);
         });
 
-    const string SqlServerPassword = "123qwe!@#QWE";
+    const string SqlServerPassword = "P@ssw0rd123";
 
     const string SqlServerUser = "sa";
 
@@ -44,17 +46,21 @@ public partial class Build
         .DependsOn(PrepareInputFiles)
         .Executes(() =>
         {
-            DockerTasks.DockerRun(s => s
-                .EnableRm()
-                .SetName("sql-server-db")
-                .SetImage("mcr.microsoft.com/mssql/server")
-                .SetEnv(
-                    $"SA_PASSWORD={SqlServerPassword}",
-                    "ACCEPT_EULA=Y",
-                    "MSSQL_PID=Express")
-                .SetPublish($"{SqlServerPort}:1433")
-                .SetMount($"type=bind,source=\"{InputFilesDirectory}\",target=/{InputFilesDirectoryName},readonly")
-                .EnableDetach());
+            // Use ProcessTasks directly to ensure correct argument order
+            // Docker requires: docker run [OPTIONS] IMAGE [COMMAND]
+            var dockerArgs = $"run " +
+                $"--name sql-server-db " +
+                $"-e SA_PASSWORD={SqlServerPassword} " +
+                $"-e ACCEPT_EULA=Y " +
+                $"-e MSSQL_PID=Express " +
+                $"-p {SqlServerPort}:1433 " +
+                $"-v \"{InputFilesDirectory}:/{InputFilesDirectoryName}:ro\" " +
+                $"-d " +
+                $"--rm " +
+                $"mcr.microsoft.com/mssql/server:2022-latest";
+
+            ProcessTasks.StartProcess("docker", dockerArgs, workingDirectory: RootDirectory)
+                .AssertZeroExitCode();
 
             SqlReadinessChecker.WaitForSqlSever(
                 $"Server=127.0.0.1,{SqlServerPort};Database=master;User={SqlServerUser};Password={SqlServerPassword};Encrypt=False;");
