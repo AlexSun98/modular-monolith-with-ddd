@@ -37,9 +37,9 @@ namespace CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configurat
                 .Handle<Exception>()
                 .WaitAndRetryAsync(new[]
                 {
-                    TimeSpan.FromSeconds(1),
-                    TimeSpan.FromSeconds(2),
-                    TimeSpan.FromSeconds(3)
+                    TimeSpan.FromSeconds(1.0),
+                    TimeSpan.FromSeconds(2.0),
+                    TimeSpan.FromSeconds(3.0)
                 });
 
             foreach (var internalCommand in internalCommandsList)
