@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ModularMonolith.DDD.Template</id>
+    <version>1.0.0</version>
+    <title>Modular Monolith with DDD Template</title>
+    <authors>Your Name</authors>
+    <description>A dotnet new template for creating modular monolith solutions with Domain-Driven Design, CQRS, and Clean Architecture patterns.</description>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/YourOrg/modular-monolith-with-ddd</projectUrl>
+    <repository type="git" url="https://github.com/YourOrg/modular-monolith-with-ddd.git" />
+    <tags>dotnet-new templates modular-monolith ddd cqrs clean-architecture</tags>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+    <readme>docs/README.md</readme>
+  </metadata>
+  <files>
+    <file src="src/**/*" target="content/src" exclude="**/bin/**;**/obj/**;**/.vs/**;**/*.user" />
+    <file src="build/**/*" target="content/build" exclude="**/bin/**;**/obj/**" />
+    <file src="docs/**/*" target="content/docs" />
+    <file src=".github/**/*" target="content/.github" />
+    <file src="global.json" target="content" />
+    <file src="README.md" target="content" />
+    <file src="README-TEMPLATE.md" target="content" />
+    <file src="build.cmd" target="content" />
+    <file src="build.sh" target="content" />
+    <file src="build.ps1" target="content" />
+  </files>
+</package>

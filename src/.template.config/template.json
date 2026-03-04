@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Your Company",
+  "classifications": [
+    "Web",
+    "API",
+    "Modular Monolith",
+    "DDD",
+    "CQRS",
+    "Clean Architecture"
+  ],
+  "identity": "ModularMonolith.DDD.Template",
+  "name": "Modular Monolith with DDD",
+  "shortName": "modular-ddd",
+  "description": "A modular monolith solution template with Domain-Driven Design, CQRS, and Clean Architecture patterns. Includes modules for Meetings, Payments, Administration, Registrations, and UserAccess.",
+  "defaultName": "MyCompany.MyApplication",
+  "sourceName": "CompanyName.MyMeetings",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "symbols": {
+    "AuthorName": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "Author name for package metadata",
+      "defaultValue": "Your Name",
+      "replaces": "Kamil Grzybek"
+    },
+    "copyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "parameters": {
+        "format": "yyyy"
+      },
+      "replaces": "2024"
+    }
+  },
+  "guids": [
+    "43dbbb02-ca43-42ad-be21-04ac867ba168",
+    "2b9855d3-f073-44d2-aa45-b15e896794b9"
+  ],
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "modifiers": [
+        {
+          "exclude": [
+            ".template.config/**/*",
+            "**/.git/**/*",
+            "**/bin/**/*",
+            "**/obj/**/*",
+            "**/*.user",
+            "**/.vs/**/*",
+            "**/node_modules/**/*",
+            "**/*.dacpac",
+            "**/.idea/**/*",
+            "**/TestResults/**/*",
+            "**/*.DotSettings.user",
+            "**/.DS_Store"
+          ]
+        }
+      ],
+      "rename": {
+        "CompanyName.MyMeetings.sln": "CompanyName.MyMeetings.sln"
+      }
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": "CompanyName.MyMeetings.sln"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "true",
+      "description": "Restore NuGet packages",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
