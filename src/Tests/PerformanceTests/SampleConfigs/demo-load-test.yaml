@@ -1,0 +1,21 @@
+scenarioName: "Demo Load Test - Public Endpoint"
+
+endpoints:
+  - url: "https://httpbin.org/delay/0"
+    method: GET
+    headers:
+      Accept: "application/json"
+
+loadParameters:
+  virtualUsers: 5
+  rampUpStrategy:
+    type: immediate
+    duration: "00:00:00"
+
+duration: "00:00:15"
+warmupPeriod: "00:00:03"
+
+successCriteria:
+  maxResponseTime: "00:00:05"
+  minThroughput: 1.0
+  maxErrorRate: 0.1

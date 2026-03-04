@@ -1,0 +1,21 @@
+scenarioName: "Simple Load Test"
+
+endpoints:
+  - url: "/api/meetings"
+    method: GET
+    headers:
+      Accept: "application/json"
+
+loadParameters:
+  virtualUsers: 10
+  rampUpStrategy:
+    type: immediate
+    duration: "00:00:00"
+
+duration: "00:01:00"
+warmupPeriod: "00:00:10"
+
+successCriteria:
+  maxResponseTime: "00:00:02"
+  minThroughput: 5.0
+  maxErrorRate: 0.05

@@ -1,0 +1,35 @@
+scenarioName: "Meeting Groups List Load Test"
+
+# Authentication configuration for MyMeetings API
+# NOTE: Requires valid user credentials from the database
+# To use: Replace username/password with actual test user credentials
+authentication:
+  type: "Bearer"
+  tokenEndpoint: "http://localhost:5000/connect/token"
+  credentials:
+    grant_type: "password"
+    client_id: "ro.client"
+    client_secret: "secret"
+    scope: "all openid profile"
+    username: "testMember@mail.com"  # Replace with actual user email
+    password: "testMemberPass"      # Replace with actual user password
+
+endpoints:
+  - url: "/api/meetings/meetingGroups"
+    method: GET
+    headers:
+      Accept: "application/json"
+
+loadParameters:
+  virtualUsers: 20
+  rampUpStrategy:
+    type: immediate
+    duration: "00:00:00"
+
+duration: "00:02:00"
+warmupPeriod: "00:00:15"
+
+successCriteria:
+  maxResponseTime: "00:00:03"
+  minThroughput: 10.0
+  maxErrorRate: 0.05

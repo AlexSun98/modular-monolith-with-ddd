@@ -1,0 +1,28 @@
+scenarioName: "Realistic API Load Test"
+
+endpoints:
+  - url: "https://jsonplaceholder.typicode.com/posts"
+    method: GET
+    headers:
+      Accept: "application/json"
+  - url: "https://jsonplaceholder.typicode.com/users"
+    method: GET
+    headers:
+      Accept: "application/json"
+
+loadParameters:
+  virtualUsers: 10
+  rampUpStrategy:
+    type: linear
+    duration: "00:00:10"
+  thinkTime:
+    minDelay: "00:00:01"
+    maxDelay: "00:00:02"
+
+duration: "00:00:30"
+warmupPeriod: "00:00:05"
+
+successCriteria:
+  maxResponseTime: "00:00:03"
+  minThroughput: 5.0
+  maxErrorRate: 0.05
