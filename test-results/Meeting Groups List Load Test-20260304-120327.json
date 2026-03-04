@@ -1,0 +1,29 @@
+{
+  "scenarioName": "Meeting Groups List Load Test",
+  "startTime": "2026-03-04T12:03:07.2156263Z",
+  "endTime": "2026-03-04T12:03:27.3149875Z",
+  "duration": "00:00:20.0993612",
+  "status": "Failed",
+  "summary": {
+    "totalRequests": 1230,
+    "successfulRequests": 0,
+    "failedRequests": 1230,
+    "errorRate": 1,
+    "p50ResponseTimeMs": 74.9292,
+    "p95ResponseTimeMs": 135.0346,
+    "p99ResponseTimeMs": 155.0742,
+    "averageThroughput": 248.31976851267783,
+    "statusCodeDistribution": {
+      "500": 1230
+    }
+  },
+  "errors": [
+    {
+      "timestamp": "2026-03-04T12:03:27.3196209Z",
+      "endpoint": "Success Criteria",
+      "statusCode": 0,
+      "message": "Error rate 100.00% exceeds maximum 5.00%"
+    }
+  ],
+  "baselineComparison": null
+}

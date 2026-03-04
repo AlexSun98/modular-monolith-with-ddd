@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.8.34330.188
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11430.68 d18.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.MyMeetings.API", "API\CompanyName.MyMeetings.API\CompanyName.MyMeetings.API.csproj", "{49D08B64-AC8E-4607-820F-8A0B989CFD33}"
 EndProject
@@ -153,6 +153,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.MyMeetings.Modules.Registrations.Domain.UnitTests", "Modules\Registrations\Tests\UnitTests\CompanyName.MyMeetings.Modules.Registrations.Domain.UnitTests.csproj", "{0535D1F2-FA8B-4093-9987-7533F8D07605}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.MyMeetings.Modules.Registrations.IntegrationEvents", "Modules\Registrations\IntegrationEvents\CompanyName.MyMeetings.Modules.Registrations.IntegrationEvents.csproj", "{2E71D2B2-516D-4B0D-8DE6-B9F3105B9C95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.MyMeetings.PerformanceTests", "Tests\PerformanceTests\CompanyName.MyMeetings.PerformanceTests.csproj", "{B2DB78D5-D5E1-A39C-F57C-F2B19198A355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -445,6 +447,12 @@ Global
 		{2E71D2B2-516D-4B0D-8DE6-B9F3105B9C95}.Production|Any CPU.Build.0 = Production|Any CPU
 		{2E71D2B2-516D-4B0D-8DE6-B9F3105B9C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E71D2B2-516D-4B0D-8DE6-B9F3105B9C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2DB78D5-D5E1-A39C-F57C-F2B19198A355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DB78D5-D5E1-A39C-F57C-F2B19198A355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DB78D5-D5E1-A39C-F57C-F2B19198A355}.Production|Any CPU.ActiveCfg = Production|Any CPU
+		{B2DB78D5-D5E1-A39C-F57C-F2B19198A355}.Production|Any CPU.Build.0 = Production|Any CPU
+		{B2DB78D5-D5E1-A39C-F57C-F2B19198A355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DB78D5-D5E1-A39C-F57C-F2B19198A355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -509,6 +517,7 @@ Global
 		{9AB969B5-4215-4ACF-8D48-EC0A6F35BC46} = {646E463D-F0E2-4BA4-9B5E-434ABE26EC07}
 		{0535D1F2-FA8B-4093-9987-7533F8D07605} = {646E463D-F0E2-4BA4-9B5E-434ABE26EC07}
 		{2E71D2B2-516D-4B0D-8DE6-B9F3105B9C95} = {8F0598A5-2F0C-4FA6-82F6-938F1830ADB7}
+		{B2DB78D5-D5E1-A39C-F57C-F2B19198A355} = {8B08A9EE-CE27-4CC3-ACB3-3BD9628E5479}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B94C21A-AA6D-4D82-963E-C69C0353B938}
