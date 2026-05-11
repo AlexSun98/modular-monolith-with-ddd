@@ -8,6 +8,9 @@
 *.sln.docstates
 .vscode/
 
+# Claude Code - user-specific local settings (don't share)
+.claude/settings.local.json
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

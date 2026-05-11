@@ -1,0 +1,28 @@
+schema: spec-driven
+
+context: |
+  Tech stack: .NET 8.0, C#, MS SQL Server, EF Core, Dapper, Autofac, MediatR, Quartz.NET
+  Architecture: Modular Monolith with DDD (Domain-Driven Design)
+  Modules communicate only via Integration Events through In-Memory Event Bus
+  Each module has 4 layers: Domain, Application, Infrastructure, IntegrationEvents
+  CQRS: Commands use DDD Aggregates via EF Core, Queries use raw SQL via Dapper
+  Testing: NUnit, NSubstitute, NetArchTest for architecture tests
+  Domain: Meeting Groups platform (Meetup.com-like system)
+  See CLAUDE.md for full architecture rules and conventions
+
+rules:
+  requirements:
+    - Use Given/When/Then acceptance criteria format
+    - Include breaking changes table when replacing legacy APIs
+    - Separate functional and non-functional requirements
+  design:
+    - Include Mermaid architecture diagrams
+    - Define aggregates, entities, and value objects
+    - Specify API contracts with request/response schemas
+    - Include key flows as sequence diagrams
+    - List correctness properties for property-based testing
+  tasks:
+    - Break into phases for incremental delivery
+    - Mark optional tasks with * suffix
+    - Reference requirement IDs in each task
+    - Include property test tasks for each phase
