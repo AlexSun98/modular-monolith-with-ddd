@@ -10,6 +10,8 @@
 
 # Claude Code - user-specific local settings (don't share)
 .claude/settings.local.json
+# Claude Code - git worktrees created by background agents
+.claude/worktrees/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
