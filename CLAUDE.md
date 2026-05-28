@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # MyMeetings - Modular Monolith with DDD
 
 ## Claude Code Setup
@@ -66,8 +70,44 @@ ASPNETCORE_MyMeetings_IntegrationTests_ConnectionString=Server=.;Database=MyMeet
 
 The API itself uses the same connection string by default (see `src/API/CompanyName.MyMeetings.API/appsettings.json`).
 
+## Build & Test Commands
+
+```bash
+# Build entire solution
+dotnet build src/CompanyName.MyMeetings.sln
+
+# Run the API (Swagger UI at http://localhost:5000/swagger)
+dotnet run --project src/API/CompanyName.MyMeetings.API
+
+# Run unit tests for a specific module
+dotnet test src/Modules/Meetings/Tests/UnitTests
+
+# Run a single test by name
+dotnet test src/Modules/Meetings/Tests/UnitTests --filter "FullyQualifiedName~CreateMeeting"
+
+# Run module-level architecture tests
+dotnet test src/Modules/Meetings/Tests/ArchTests
+
+# Run cross-module architecture tests
+dotnet test src/Tests/ArchTests
+
+# Run integration tests (requires env var — see below)
+dotnet test src/Modules/Meetings/Tests/IntegrationTests
+
+# Run system integration tests
+dotnet test src/Tests/IntegrationTests
+```
+
+**Integration test prerequisite** — set this environment variable at machine scope before running integration or system tests:
+```
+ASPNETCORE_MyMeetings_IntegrationTests_ConnectionString=Server=.;Database=MyMeetings;TrustServerCertificate=True;Trusted_Connection=True;
+```
+
+The API itself uses the same connection string by default (see `src/API/CompanyName.MyMeetings.API/appsettings.json`).
+
 ## Project Overview
 
+This is a **Modular Monolith** .NET 10 application implementing **Domain-Driven Design** for a Meeting Groups domain (Meetup.com-like system). Solution: `src/CompanyName.MyMeetings.sln`.
 This is a **Modular Monolith** .NET 10 application implementing **Domain-Driven Design** for a Meeting Groups domain (Meetup.com-like system). Solution: `src/CompanyName.MyMeetings.sln`.
 
 ## Architecture Rules (MUST follow)
@@ -142,11 +182,17 @@ Command handlers are decorated with 3 decorators (in order):
 | Cross-module arch tests | `src/Tests/ArchTests/` |
 | System integration tests | `src/Tests/IntegrationTests/` |
 | Performance tests | `src/Tests/PerformanceTests/` |
+| Module tests | `src/Modules/{Module}/Tests/` |
+| Module arch tests | `src/Modules/{Module}/Tests/ArchTests/` |
+| Cross-module arch tests | `src/Tests/ArchTests/` |
+| System integration tests | `src/Tests/IntegrationTests/` |
+| Performance tests | `src/Tests/PerformanceTests/` |
 | ADRs | `docs/architecture-decision-log/` |
 | Copilot guides | `docs/copilot-instructions/` |
 
 ## Technology Stack
 
+- .NET 10, C#
 - .NET 10, C#
 - MS SQL Server (separate schemas per module)
 - EF Core (Write Model), Dapper (Read Model)
@@ -230,3 +276,4 @@ All major decisions are documented in `docs/architecture-decision-log/`. Key ADR
 - ADR-0018: Database per module (schema)
 - ADR-0019: Event sourcing for Payments
 - ADR-0020: Outbox/Inbox pattern
+
