@@ -2,11 +2,6 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-# MyMeetings - Modular Monolith with DDD
 
 ## Claude Code Setup
 
@@ -30,9 +25,9 @@ Project-local engineering skills live in `.claude/skills/`. The following are lo
 | `/improve-codebase-architecture` | Architecture review | Surfaces shallow modules, generates HTML report of candidates |
 | `/zoom-out` | Unfamiliar code area | Map of relevant modules using domain vocabulary |
 | `/handoff` | Ending a session | Compact context doc for the next agent |
-| `/ubiquitous-language` | Defining domain terms | Extracts/formalizes glossary into `CONTEXT.md` |
+| `/ubiquitous-language` | Defining domain terms | Extracts/formalizes glossary into `docs/catalog-of-terms/ubiquitous-language/{Module}.md` |
 
-Domain glossary: `CONTEXT.md` (root) and `docs/catalog-of-terms/`. Architecture decisions: `docs/architecture-decision-log/`.
+Domain glossary: per-bounded-context files under `docs/catalog-of-terms/ubiquitous-language/`, with `CONTEXT-MAP.md` (root) as the entry point. Methodology/patterns: `docs/catalog-of-terms/`. Architecture decisions: `docs/architecture-decision-log/`.
 
 ## Build & Test Commands
 
