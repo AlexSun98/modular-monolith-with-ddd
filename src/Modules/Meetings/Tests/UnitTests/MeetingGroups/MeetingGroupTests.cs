@@ -100,13 +100,13 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Domain.UnitTests.MeetingGroups
         }
 
         [Test]
-        public void CreateMeeting_WhenGroupIsNotPayed_IsNotPossible()
+        public void CreateMeeting_WhenGroupIsNotPaid_IsNotPossible()
         {
             var meetingGroup = CreateMeetingGroup();
 
             MemberId creatorId = new MemberId(Guid.NewGuid());
 
-            AssertBrokenRule<MeetingCanBeOrganizedOnlyByPayedGroupRule>(() =>
+            AssertBrokenRule<MeetingCanBeOrganizedOnlyByPaidGroupRule>(() =>
             {
                 meetingGroup.CreateMeeting(
                     "title",

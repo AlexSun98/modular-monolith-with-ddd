@@ -8,7 +8,7 @@ using CompanyName.MyMeetings.Modules.Meetings.Domain.Members;
 
 namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingComments.AddMeetingCommentReply
 {
-    internal class AddReplyToMeetingCommentCommandHandler : ICommandHandler<AddReplyToMeetingCommentCommand, Guid>
+    internal class AddMeetingCommentReplyCommandHandler : ICommandHandler<AddMeetingCommentReplyCommand, Guid>
     {
         private readonly IMeetingCommentRepository _meetingCommentRepository;
         private readonly IMeetingRepository _meetingRepository;
@@ -16,7 +16,7 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingComments.Ad
         private readonly IMeetingCommentingConfigurationRepository _meetingCommentingConfigurationRepository;
         private readonly IMemberContext _memberContext;
 
-        internal AddReplyToMeetingCommentCommandHandler(IMeetingCommentRepository meetingCommentRepository, IMeetingRepository meetingRepository, IMeetingGroupRepository meetingGroupRepository, IMeetingCommentingConfigurationRepository meetingCommentingConfigurationRepository, IMemberContext memberContext)
+        internal AddMeetingCommentReplyCommandHandler(IMeetingCommentRepository meetingCommentRepository, IMeetingRepository meetingRepository, IMeetingGroupRepository meetingGroupRepository, IMeetingCommentingConfigurationRepository meetingCommentingConfigurationRepository, IMemberContext memberContext)
         {
             _meetingCommentRepository = meetingCommentRepository;
             _meetingRepository = meetingRepository;
@@ -25,7 +25,7 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingComments.Ad
             _memberContext = memberContext;
         }
 
-        public async Task<Guid> Handle(AddReplyToMeetingCommentCommand command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(AddMeetingCommentReplyCommand command, CancellationToken cancellationToken)
         {
             var meetingComment = await _meetingCommentRepository.GetByIdAsync(new MeetingCommentId(command.InReplyToCommentId));
             if (meetingComment == null)

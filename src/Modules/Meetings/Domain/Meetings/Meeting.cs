@@ -299,11 +299,11 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Domain.Meetings
             attendee.Remove(removingPersonId, reason);
         }
 
-        public void MarkAttendeeFeeAsPayed(MemberId memberId)
+        public void MarkAttendeeFeeAsPaid(MemberId memberId)
         {
             var attendee = GetActiveAttendee(memberId);
 
-            attendee.MarkFeeAsPayed();
+            attendee.MarkFeeAsPaid();
         }
 
         public MeetingComment AddComment(MemberId authorId, string comment, MeetingGroup meetingGroup, MeetingCommentingConfiguration meetingCommentingConfiguration)

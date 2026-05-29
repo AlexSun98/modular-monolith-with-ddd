@@ -149,7 +149,7 @@ public class MeetingGroup : Entity, IAggregateRoot
     )
     {
         // Check business rules
-        this.CheckRule(new MeetingCanBeOrganizedOnlyByPayedGroupRule(_paymentDateTo));
+        this.CheckRule(new MeetingCanBeOrganizedOnlyByPaidGroupRule(_paymentDateTo));
         this.CheckRule(new MeetingHostMustBeAMeetingGroupMemberRule(creatorId, hostsMembersIds, _members));
 
         // Create and return new entity

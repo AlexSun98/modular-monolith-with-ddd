@@ -1,7 +1,7 @@
 ﻿using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroupProposals.AcceptMeetingGroupProposal;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroupProposals.ProposeMeetingGroup;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.CreateNewMeetingGroup;
-using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticationMemberMeetingGroups;
+using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticatedMemberMeetingGroups;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetMeetingGroupDetails;
 using CompanyName.MyMeetings.Modules.Meetings.Domain.MeetingGroupProposals;
 using CompanyName.MyMeetings.Modules.Meetings.IntegrationTests.MeetingGroupProposals;
@@ -32,7 +32,7 @@ namespace CompanyName.MyMeetings.Modules.Meetings.IntegrationTests.MeetingGroups
                     new MeetingGroupProposalId(proposalId)));
 
             // Assert
-            var meetingGroups = await MeetingsModule.ExecuteQueryAsync(new GetAuthenticationMemberMeetingGroupsQuery());
+            var meetingGroups = await MeetingsModule.ExecuteQueryAsync(new GetAuthenticatedMemberMeetingGroupsQuery());
             Assert.That(meetingGroups, Is.Not.Empty);
 
             var meetingGroupDetails =

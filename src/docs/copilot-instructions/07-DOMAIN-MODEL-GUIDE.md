@@ -81,7 +81,7 @@ public class MeetingGroup : Entity, IAggregateRoot
         MemberId creatorId)
     {
         // Check business rules
-        this.CheckRule(new MeetingCanBeOrganizedOnlyByPayedGroupRule(_paymentDateTo));
+        this.CheckRule(new MeetingCanBeOrganizedOnlyByPaidGroupRule(_paymentDateTo));
         this.CheckRule(new MeetingHostMustBeAMeetingGroupMemberRule(creatorId, hostsMembersIds, _members));
 
         // Create child entity
@@ -391,11 +391,11 @@ public interface IBusinessRule
 
 ```csharp
 // Location: Modules/{Module}/Domain/{AggregateName}/Rules/{RuleName}Rule.cs
-public class MeetingCanBeOrganizedOnlyByPayedGroupRule : IBusinessRule
+public class MeetingCanBeOrganizedOnlyByPaidGroupRule : IBusinessRule
 {
     private readonly DateTime? _paymentDateTo;
 
-    public MeetingCanBeOrganizedOnlyByPayedGroupRule(DateTime? paymentDateTo)
+    public MeetingCanBeOrganizedOnlyByPaidGroupRule(DateTime? paymentDateTo)
     {
         _paymentDateTo = paymentDateTo;
     }

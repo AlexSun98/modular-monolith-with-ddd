@@ -3,16 +3,16 @@ using CompanyName.MyMeetings.BuildingBlocks.Application.Data;
 using CompanyName.MyMeetings.Modules.Meetings.Application.Configuration.Queries;
 using Dapper;
 
-namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticationMemberMeetingGroups
+namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticatedMemberMeetingGroups
 {
-    internal class GetAuthenticationMemberMeetingGroupsQueryHandler :
-        IQueryHandler<GetAuthenticationMemberMeetingGroupsQuery, List<MemberMeetingGroupDto>>
+    internal class GetAuthenticatedMemberMeetingGroupsQueryHandler :
+        IQueryHandler<GetAuthenticatedMemberMeetingGroupsQuery, List<MemberMeetingGroupDto>>
     {
         private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
         private readonly IExecutionContextAccessor _executionContextAccessor;
 
-        public GetAuthenticationMemberMeetingGroupsQueryHandler(
+        public GetAuthenticatedMemberMeetingGroupsQueryHandler(
             ISqlConnectionFactory sqlConnectionFactory,
             IExecutionContextAccessor executionContextAccessor)
         {
@@ -21,7 +21,7 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetA
         }
 
         public async Task<List<MemberMeetingGroupDto>> Handle(
-            GetAuthenticationMemberMeetingGroupsQuery query,
+            GetAuthenticatedMemberMeetingGroupsQuery query,
             CancellationToken cancellationToken)
         {
             var connection = _sqlConnectionFactory.GetOpenConnection();

@@ -2,13 +2,13 @@
 
 namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingComments.AddMeetingCommentReply
 {
-    public class AddReplyToMeetingCommentCommand : CommandBase<Guid>
+    public class AddMeetingCommentReplyCommand : CommandBase<Guid>
     {
         public Guid InReplyToCommentId { get; }
 
         public string Reply { get; }
 
-        public AddReplyToMeetingCommentCommand(Guid inReplyToCommentId, string reply)
+        public AddMeetingCommentReplyCommand(Guid inReplyToCommentId, string reply)
         {
             InReplyToCommentId = inReplyToCommentId;
             Reply = reply;

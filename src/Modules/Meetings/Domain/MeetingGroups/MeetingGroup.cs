@@ -99,7 +99,7 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Domain.MeetingGroups
             List<MemberId> hostsMembersIds,
             MemberId creatorId)
         {
-            this.CheckRule(new MeetingCanBeOrganizedOnlyByPayedGroupRule(_paymentDateTo));
+            this.CheckRule(new MeetingCanBeOrganizedOnlyByPaidGroupRule(_paymentDateTo));
 
             this.CheckRule(new MeetingHostMustBeAMeetingGroupMemberRule(creatorId, hostsMembersIds, _members));
 
