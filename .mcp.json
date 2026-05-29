@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-mcp.json",
+  "_comment": "Project-scoped MCP servers. Committed to the repo so teammates pick up the same wiring. Tokens are read from env vars — never paste secrets here.",
+  "mcpServers": {
+    "github": {
+      "_comment": "Official GitHub MCP server (github/github-mcp-server) run locally via Docker. Provides mcp__github__* tools for PRs, issues, code search, Actions, etc. Set GITHUB_PERSONAL_ACCESS_TOKEN at user-scope (see docs/copilot-instructions/MCP-SETUP.md) — Docker must be running.",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  }
+}
