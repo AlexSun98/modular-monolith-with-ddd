@@ -1,5 +1,23 @@
 # Catalog of terms
 
+This catalog has two halves: the **business glossary** (per–bounded-context ubiquitous language) and the **methodology & pattern reference** (DDD building blocks, architectural patterns, testing idioms).
+
+> Need the entry point? Start at the root [`CONTEXT-MAP.md`](../../CONTEXT-MAP.md), which routes you to the right bounded context.
+
+## Ubiquitous Language (business — per bounded context)
+
+Each MyMeetings module owns its own glossary. The same word (e.g. `User`, `Member`) can mean different things in different contexts — that is the point. See the [overview](./ubiquitous-language/README.md) for cross-context relationships and global ambiguities.
+
+- [Meetings](./ubiquitous-language/Meetings.md) — `MeetingGroup`, `Meeting`, `MeetingComment`, `Organizer`, `Host`, `Attendee` (core domain)
+- [Administration](./ubiquitous-language/Administration.md) — `MeetingGroupProposal` lifecycle, `Administrator`
+- [Payments](./ubiquitous-language/Payments.md) — `Payer`, `Subscription`, `MeetingFee`
+- [Registrations](./ubiquitous-language/Registrations.md) — `UserRegistration`
+- [UserAccess](./ubiquitous-language/UserAccess.md) — `User`, `Role`, `Permission`
+
+## Methodology & Patterns
+
+DDD building blocks, architectural patterns, and engineering vocabulary used across the codebase. Each entry has a definition, code excerpt, and (where useful) a PlantUML diagram.
+
 - Act/Arrange/Assert
 - Actor (Event Storming)
 - API
