@@ -1,6 +1,6 @@
 ﻿using CompanyName.MyMeetings.API.Configuration.Authorization;
 using CompanyName.MyMeetings.Modules.Payments.Application.Contracts;
-using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetPayerSubscription;
+using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetAuthenticatedPayerSubscription;
 using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetSubscriptionDetails;
 using Microsoft.AspNetCore.Mvc;
 

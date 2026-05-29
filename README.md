@@ -290,11 +290,11 @@ As can be found on the website of the author of this model ([Simon Brown](https:
 
 #### 3.0.2 C2 Container
 
-![](docs/C4/C2_Containers.png)
+![](docs/C4/c2_containers.png)
 
 #### 3.0.3 C3 Component (high-level)
 
-![](docs/C4/C3_Components.png)
+![](docs/C4/c3_components.png)
 
 #### 3.0.4 C3 Component (module-level)
 

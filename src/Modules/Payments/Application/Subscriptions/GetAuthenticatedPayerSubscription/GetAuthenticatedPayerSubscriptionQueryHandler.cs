@@ -4,7 +4,7 @@ using CompanyName.MyMeetings.Modules.Payments.Application.Configuration.Queries;
 using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetSubscriptionDetails;
 using Dapper;
 
-namespace CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetPayerSubscription
+namespace CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetAuthenticatedPayerSubscription
 {
     internal class GetAuthenticatedPayerSubscriptionQueryHandler : IQueryHandler<GetAuthenticatedPayerSubscriptionQuery, SubscriptionDetailsDto>
     {

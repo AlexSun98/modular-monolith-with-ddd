@@ -1,4 +1,4 @@
-﻿namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticationMemberMeetingGroups
+﻿namespace CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticatedMemberMeetingGroups
 {
     public class MemberMeetingGroupDto
     {

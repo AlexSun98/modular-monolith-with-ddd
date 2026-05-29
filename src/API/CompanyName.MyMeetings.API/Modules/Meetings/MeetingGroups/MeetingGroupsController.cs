@@ -2,7 +2,7 @@
 using CompanyName.MyMeetings.Modules.Meetings.Application.Contracts;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.EditMeetingGroupGeneralAttributes;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAllMeetingGroups;
-using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticationMemberMeetingGroups;
+using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetAuthenticatedMemberMeetingGroups;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.GetMeetingGroupDetails;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.JoinToGroup;
 using CompanyName.MyMeetings.Modules.Meetings.Application.MeetingGroups.LeaveMeetingGroup;
@@ -27,7 +27,7 @@ namespace CompanyName.MyMeetings.API.Modules.Meetings.MeetingGroups
         public async Task<IActionResult> GetAuthenticatedMemberMeetingGroups()
         {
             var meetingGroups = await _meetingsModule.ExecuteQueryAsync(
-                new GetAuthenticationMemberMeetingGroupsQuery());
+                new GetAuthenticatedMemberMeetingGroupsQuery());
 
             return Ok(meetingGroups);
         }

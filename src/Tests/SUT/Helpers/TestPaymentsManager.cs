@@ -1,7 +1,7 @@
 ﻿using CompanyName.MyMeetings.BuildingBlocks.Application;
 using CompanyName.MyMeetings.Modules.Payments.Application.Contracts;
 using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.BuySubscription;
-using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetPayerSubscription;
+using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetAuthenticatedPayerSubscription;
 using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetSubscriptionDetails;
 using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.GetSubscriptionPayments;
 using CompanyName.MyMeetings.Modules.Payments.Application.Subscriptions.MarkSubscriptionPaymentAsPaid;
