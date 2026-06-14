@@ -23,7 +23,7 @@ namespace CompanyName.MyMeetings.Modules.UserAccess.ArchTests.Module
         {
             var result = Types.InAssembly(DomainAssembly)
                 .Should()
-                .NotHaveDependencyOn(ApplicationAssembly.GetName().Name)
+                .NotHaveDependencyOn(InfrastructureAssembly.GetName().Name)
                 .GetResult();
 
             AssertArchTestResult(result);
