@@ -15,6 +15,7 @@ using CompanyName.MyMeetings.Modules.Administration.Infrastructure.Configuration
 using CompanyName.MyMeetings.Modules.Meetings.Infrastructure.Configuration;
 using CompanyName.MyMeetings.Modules.Payments.Infrastructure.Configuration;
 using CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configuration;
+using CompanyName.MyMeetings.Modules.UserAccess.Infrastructure;
 using CompanyName.MyMeetings.Modules.UserAccess.Infrastructure.Configuration;
 using CompanyName.MyMeetings.Modules.UserAccess.Infrastructure.Configuration.Identity;
 using Hellang.Middleware.ProblemDetails;
@@ -181,7 +182,8 @@ namespace CompanyName.MyMeetings.API
                 emailsConfiguration,
                 _configuration["Security:TextEncryptionKey"],
                 null,
-                null);
+                null,
+                new UserAccessModule());
         }
     }
 }
