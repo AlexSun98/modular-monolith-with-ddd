@@ -71,8 +71,50 @@ namespace CompanyName.MyMeetings.SUT.SeedWork
 
                 var outboxCountMeetingsAdministration = await sqlConnection.ExecuteScalarAsync<int>(
                     """
-                    SELECT COUNT(*) 
-                    FROM [administration].[OutboxMessages] AS [OutboxMessage] 
+                    SELECT COUNT(*)
+                    FROM [administration].[OutboxMessages] AS [OutboxMessage]
+                    WHERE [OutboxMessage].[ProcessedDate] IS NULL
+                    """);
+
+                var internalCommandsCountPayments = await sqlConnection.ExecuteScalarAsync<int>(
+                    """
+                    SELECT COUNT(*)
+                    FROM [payments].[InternalCommands] AS [InternalCommand]
+                    WHERE [InternalCommand].[ProcessedDate] IS NULL
+                    """);
+
+                var inboxCountPayments = await sqlConnection.ExecuteScalarAsync<int>(
+                    """
+                    SELECT COUNT(*)
+                    FROM [payments].[InboxMessages] AS [InboxMessage]
+                    WHERE [InboxMessage].[ProcessedDate] IS NULL
+                    """);
+
+                var outboxCountPayments = await sqlConnection.ExecuteScalarAsync<int>(
+                    """
+                    SELECT COUNT(*)
+                    FROM [payments].[OutboxMessages] AS [OutboxMessage]
+                    WHERE [OutboxMessage].[ProcessedDate] IS NULL
+                    """);
+
+                var internalCommandsCountRegistrations = await sqlConnection.ExecuteScalarAsync<int>(
+                    """
+                    SELECT COUNT(*)
+                    FROM [registrations].[InternalCommands] AS [InternalCommand]
+                    WHERE [InternalCommand].[ProcessedDate] IS NULL
+                    """);
+
+                var inboxCountRegistrations = await sqlConnection.ExecuteScalarAsync<int>(
+                    """
+                    SELECT COUNT(*)
+                    FROM [registrations].[InboxMessages] AS [InboxMessage]
+                    WHERE [InboxMessage].[ProcessedDate] IS NULL
+                    """);
+
+                var outboxCountRegistrations = await sqlConnection.ExecuteScalarAsync<int>(
+                    """
+                    SELECT COUNT(*)
+                    FROM [registrations].[OutboxMessages] AS [OutboxMessage]
                     WHERE [OutboxMessage].[ProcessedDate] IS NULL
                     """);
 
@@ -84,7 +126,13 @@ namespace CompanyName.MyMeetings.SUT.SeedWork
                     outboxCountMeetings == 0 &&
                     internalCommandsCountAdministration == 0 &&
                     inboxCountMeetingsAdministration == 0 &&
-                    outboxCountMeetingsAdministration == 0)
+                    outboxCountMeetingsAdministration == 0 &&
+                    internalCommandsCountPayments == 0 &&
+                    inboxCountPayments == 0 &&
+                    outboxCountPayments == 0 &&
+                    internalCommandsCountRegistrations == 0 &&
+                    inboxCountRegistrations == 0 &&
+                    outboxCountRegistrations == 0)
                 {
                     return;
                 }
