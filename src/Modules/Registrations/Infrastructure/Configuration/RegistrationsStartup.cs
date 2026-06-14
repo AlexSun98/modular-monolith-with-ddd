@@ -16,6 +16,7 @@ using CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configuration.
 using CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configuration.Processing.Outbox;
 using CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configuration.Quartz;
 using CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configuration.UserAccess;
+using CompanyName.MyMeetings.Modules.UserAccess.Application.Contracts;
 using Serilog;
 
 namespace CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configuration
@@ -32,6 +33,7 @@ namespace CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configurat
             string textEncryptionKey,
             IEmailSender emailSender,
             IEventsBus eventsBus,
+            IUserAccessModule userAccessModule,
             long? internalProcessingPoolingInterval = null)
         {
             var moduleLogger = logger.ForContext("Module", "Registrations");
@@ -43,7 +45,8 @@ namespace CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configurat
                 emailsConfiguration,
                 textEncryptionKey,
                 emailSender,
-                eventsBus);
+                eventsBus,
+                userAccessModule);
 
             QuartzStartup.Initialize(moduleLogger, internalProcessingPoolingInterval);
 
@@ -57,7 +60,8 @@ namespace CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configurat
             EmailsConfiguration emailsConfiguration,
             string textEncryptionKey,
             IEmailSender emailSender,
-            IEventsBus eventsBus)
+            IEventsBus eventsBus,
+            IUserAccessModule userAccessModule)
         {
             var containerBuilder = new ContainerBuilder();
 
@@ -68,7 +72,7 @@ namespace CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configurat
             containerBuilder.RegisterModule(new ProcessingModule());
             containerBuilder.RegisterModule(new EventsBusModule(eventsBus));
             containerBuilder.RegisterModule(new MediatorModule());
-            containerBuilder.RegisterModule(new UserAccessAutofacModule());
+            containerBuilder.RegisterModule(new UserAccessAutofacModule(userAccessModule));
 
             var domainNotificationsMap = new BiDictionary<string, Type>();
             domainNotificationsMap.Add("NewUserRegisteredNotification", typeof(NewUserRegisteredNotification));

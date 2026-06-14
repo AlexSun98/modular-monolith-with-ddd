@@ -6,6 +6,7 @@ using CompanyName.MyMeetings.BuildingBlocks.IntegrationTests;
 using CompanyName.MyMeetings.Modules.Registrations.Application.Contracts;
 using CompanyName.MyMeetings.Modules.Registrations.Infrastructure;
 using CompanyName.MyMeetings.Modules.Registrations.Infrastructure.Configuration;
+using CompanyName.MyMeetings.Modules.UserAccess.Application.Contracts;
 using Dapper;
 using MediatR;
 using NSubstitute;
@@ -51,7 +52,8 @@ namespace CompanyNames.MyMeetings.Modules.Registrations.IntegrationTests.SeedWor
                 new EmailsConfiguration("from@email.com"),
                 "key",
                 EmailSender,
-                null);
+                null,
+                Substitute.For<IUserAccessModule>());
 
             RegistrationsModule = new RegistrationsModule();
         }

@@ -190,6 +190,7 @@ namespace CompanyName.MyMeetings.SUT.SeedWork
                 "key",
                 EmailSender,
                 EventsBus,
+                new UserAccessModule(),
                 100);
 
             RegistrationsModule = new RegistrationsModule();
