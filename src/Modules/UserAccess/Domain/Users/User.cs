@@ -13,9 +13,7 @@ namespace CompanyName.MyMeetings.Modules.UserAccess.Domain.Users
 
         private string _email;
 
-#pragma warning disable CS0414 // Field is assigned but its value is never used
         private bool _isActive;
-#pragma warning restore CS0414 // Field is assigned but its value is never used
 
         private string _firstName;
 
@@ -91,6 +89,13 @@ namespace CompanyName.MyMeetings.Modules.UserAccess.Domain.Users
             _roles = [role];
 
             this.AddDomainEvent(new UserCreatedDomainEvent(this.Id));
+        }
+
+        public void Deactivate()
+        {
+            _isActive = false;
+
+            this.AddDomainEvent(new UserDeactivatedDomainEvent(this.Id));
         }
     }
 }
