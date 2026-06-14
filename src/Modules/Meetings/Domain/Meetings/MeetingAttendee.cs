@@ -33,9 +33,7 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Domain.Meetings
 
         private MoneyValue _fee;
 
-#pragma warning disable CS0414 // Field is assigned but its value is never used
         private bool _isFeePaid;
-#pragma warning restore CS0414 // Field is assigned but its value is never used
 
         private MeetingAttendee()
         {
@@ -102,7 +100,7 @@ namespace CompanyName.MyMeetings.Modules.Meetings.Domain.Meetings
 
         internal bool IsActive()
         {
-            return !_decisionChangeDate.HasValue && !_isRemoved;
+            return !_decisionChangeDate.HasValue && !_isRemoved && (_fee == MoneyValue.Undefined || _isFeePaid);
         }
 
         internal bool IsActiveHost()
