@@ -18,7 +18,6 @@ namespace CompanyName.MyMeetings.Modules.Payments.IntegrationTests.Subscriptions
 {
     [NonParallelizable]
     [TestFixture]
-    [Ignore("Sometimes fails, to check why")]
     public class SubscriptionLifecycleTests : TestBase
     {
         [Test]
@@ -101,7 +100,8 @@ namespace CompanyName.MyMeetings.Modules.Payments.IntegrationTests.Subscriptions
                 new GetSubscriptionPaymentsProbe(
                     PaymentsModule,
                     ExecutionContext.UserId,
-                    x => x.Any(y => y.PaymentId == subscriptionRenewalPaymentId)),
+                    x => x.Any(y => y.PaymentId == subscriptionRenewalPaymentId &&
+                                    y.Status == SubscriptionRenewalPaymentStatus.Paid.Code)),
                 10000);
 
             renewalPayment = subscriptionPayments
