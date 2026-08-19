@@ -7,7 +7,7 @@ namespace CompanyName.MyMeetings.Modules.UserAccess.Application.Authentication.A
     {
         private const int SaltSize = 0x10; // 16 bytes
         private const int HashSize = 0x20; // 32 bytes
-        private const int Iterations = 0x3e8; // 1000 iterations
+        private const int Iterations = 600_000; // OWASP minimum for PBKDF2-HMAC-SHA256
 
         public static string HashPassword(string password)
         {
